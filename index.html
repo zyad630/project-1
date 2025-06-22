@@ -8,229 +8,118 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;800&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* الألوان: استخدام لوحة ألوان ديسكو/حفلات */
         :root {
-            --dark-bg: #100a20; /* بنفسجي غامق جدا للخلفية */
-            --mid-bg: #1c0f38;  /* بنفسجي غامق متوسط */
-            --accent-blue: #00bcd4; /* أزرق سماوي مضيء */
-            --accent-pink: #ff1493; /* وردي فاقع */
+            --dark-bg: #0c0520;
+            --mid-bg: #1a0c40;
+            --neon-pink: #ff1493;
+            --neon-blue: #00e5ff;
             --whatsapp-green: #25D366;
             --whatsapp-green-hover: #1DA851;
-            --text-light: #e0e0e0; /* أوف وايت للنصوص */
-            --text-heading: #ffffff; /* أبيض للعناوين */
+            --text-light: #f0f0f0;
         }
 
-        /* الخطوط والألوان الأساسية */
         body {
-            font-family: 'Cairo', sans-serif;
             margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, var(--dark-bg), var(--mid-bg), #0f0a28); /* تدرج لوني أكثر ديناميكية */
+            font-family: 'Cairo', sans-serif;
+            background: radial-gradient(circle at top left, #1a0c40, #0c0520 80%);
             color: var(--text-light);
             text-align: center;
-            line-height: 1.7;
-            overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي */
+            overflow-x: hidden;
+            animation: pulseBackground 10s infinite alternate;
         }
 
-        /* الهيدر (الجزء العلوي) */
+        @keyframes pulseBackground {
+            0% { background-position: top left; }
+            100% { background-position: bottom right; }
+        }
+
         header {
-            background-color: rgba(0, 0, 0, 0.6); /* خلفية أغمق وأكثر شفافية */
-            padding: 40px 20px;
-            font-size: 3em; /* حجم أكبر */
-            font-family: 'Orbitron', sans-serif; /* خط مميز للهيدر */
-            color: var(--accent-pink); /* لون وردي لامع */
-            text-shadow: 0 0 15px var(--accent-pink), 0 0 30px var(--accent-pink), 0 0 45px var(--accent-blue); /* تأثير إضاءة نيون */
-            letter-spacing: 3px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* ظل أقوى */
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 10;
-            overflow: hidden; /* لمنع أي تجاوزات */
-        }
-        header::after { /* تأثير خط تحت الهيدر */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 3px;
-            background: linear-gradient(to right, transparent, var(--accent-blue), var(--accent-pink), transparent);
-            box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-pink);
+            padding: 50px 20px;
+            font-size: 3em;
+            color: var(--neon-pink);
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-blue);
+            border-bottom: 2px solid var(--neon-blue);
         }
 
-        /* المحتوى الأساسي */
         .container {
             max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 30px;
-            position: relative;
-            z-index: 5;
+            margin: auto;
+            padding: 40px 20px;
         }
 
-        /* قسم الواتساب */
         .whatsapp-section {
-            margin: 60px 0;
-            animation: fadeInScale 1.5s ease-out forwards; /* تأثير ظهور مع تكبير */
-            opacity: 0; /* يبدأ مخفي */
-        }
-        @keyframes fadeInScale {
-            to { opacity: 1; transform: scale(1); }
-            from { opacity: 0; transform: scale(0.9); }
+            margin: 50px 0;
         }
 
         .whatsapp-button {
             display: inline-flex;
             align-items: center;
-            background: linear-gradient(45deg, var(--whatsapp-green), #1dd680); /* تدرج أخضر للواتساب */
-            color: var(--text-heading);
-            padding: 20px 45px;
-            border-radius: 70px;
+            background: linear-gradient(45deg, var(--whatsapp-green), #1dd680);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 60px;
+            font-size: 1.8em;
+            font-weight: bold;
             text-decoration: none;
-            font-size: 2em;
-            font-weight: 800; /* خط أسمك */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* ظل أعمق */
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            box-shadow: 0 0 20px #000;
+            transition: 0.3s;
             position: relative;
-            overflow: hidden; /* عشان تأثير الموجة */
+            overflow: hidden;
         }
 
         .whatsapp-button:hover {
             background: linear-gradient(45deg, var(--whatsapp-green-hover), #17b36f);
-            transform: translateY(-8px) scale(1.02); /* حركة لأعلى وتكبير بسيط */
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-        }
-
-        /* تأثير موجة داخل زر الواتساب عند الهوفر */
-        .whatsapp-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transition: width 0.4s ease-out, height 0.4s ease-out, top 0.4s ease-out, left 0.4s ease-out;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            opacity: 0;
-        }
-        .whatsapp-button:hover::before {
-            width: 300%;
-            height: 300%;
-            opacity: 1;
+            transform: scale(1.05);
         }
 
         .whatsapp-button img {
-            width: 40px;
-            height: 40px;
-            margin-right: 18px;
-            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3)); /* ظل أيقونة الواتساب */
-            position: relative;
-            z-index: 2;
-        }
-        .whatsapp-button span {
-            position: relative;
-            z-index: 2;
+            width: 36px;
+            height: 36px;
+            margin-left: 15px;
         }
 
-
-        /* معرض الصور */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* حجم أكبر للصور */
-            gap: 35px; /* مسافة أكبر بين الصور */
-            margin-top: 70px;
-            padding-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .gallery img {
             width: 100%;
-            height: 280px; /* ارتفاع أكبر */
+            height: 250px;
             object-fit: cover;
-            border-radius: 18px; /* حواف أكثر دائرية */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* ظل أعمق وأقوى */
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
-            border: 4px solid transparent; /* برواز شفاف مبدئيًا */
-            cursor: pointer;
+            border-radius: 16px;
+            box-shadow: 0 0 15px #000;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .gallery img:hover {
-            transform: scale(1.05) rotate(1deg); /* تكبير ودوران خفيف */
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8);
-            border-color: var(--accent-blue); /* إطار أزرق عند الهوفر */
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--neon-blue);
         }
 
-        /* الفوتر (الجزء السفلي) */
         footer {
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #a0a0a0;
+            background: #0a0318;
             padding: 30px 20px;
-            margin-top: 70px;
-            font-size: 1.3em;
-            box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
-            font-weight: 600;
+            color: #ccc;
+            font-size: 1.2em;
+            margin-top: 60px;
+            border-top: 2px solid var(--neon-pink);
         }
 
-        /* تحسينات للشاشات الصغيرة */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             header {
-                font-size: 2.2em;
-                padding: 30px 15px;
+                font-size: 2em;
             }
             .whatsapp-button {
-                font-size: 1.6em;
+                font-size: 1.3em;
                 padding: 15px 30px;
             }
             .whatsapp-button img {
-                width: 30px;
-                height: 30px;
-                margin-right: 12px;
-            }
-            .gallery {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .gallery img {
-                height: 250px;
-            }
-            footer {
-                font-size: 1.1em;
-            }
-        }
-
-        /* تحسينات للشاشات الأصغر (الموبايل) */
-        @media (max-width: 480px) {
-            header {
-                font-size: 1.8em;
-                padding: 25px 10px;
-                letter-spacing: 1px;
-            }
-            .whatsapp-button {
-                font-size: 1.4em;
-                padding: 12px 25px;
-            }
-            .whatsapp-button img {
-                width: 25px;
-                height: 25px;
-                margin-right: 8px;
-            }
-            .container {
-                padding: 0 15px;
-            }
-            .gallery img {
-                height: 200px;
-                border-radius: 12px;
-            }
-            .gallery {
-                gap: 20px;
-            }
-            footer {
-                font-size: 1em;
-                padding: 20px 10px;
+                width: 28px;
+                height: 28px;
+                margin-left: 10px;
             }
         }
     </style>
@@ -243,21 +132,21 @@
 
     <div class="container">
         <div class="whatsapp-section">
-            <a href="https://wa.me/201110023164" class="whatsapp-button" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp Icon">
+            <a href="https://api.whatsapp.com/send?phone=201110023164" class="whatsapp-button" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="واتساب">
                 <span>تواصل واتساب الآن</span>
             </a>
         </div>
 
         <div class="gallery">
-            <img src="6a68d0aa-3d6e-420d-bea9-826ac53b84c0.jpg" alt="أجواء احتفالية مبهجة">
-            <img src="281c8d80-3d4f-4185-97de-06a2b8d75bc1.jpg" alt="ديسكو وليالي صاخبة">
-            <img src="37177027-03dc-430f-be0d-1428d347cb02.jpg" alt="سهرات لا تُنسى في مصر">
+            <img src="6a68d0aa-3d6e-420d-bea9-826ac53b84c0.jpg" alt="سهرات مصر">
+            <img src="281c8d80-3d4f-4185-97de-06a2b8d75bc1.jpg" alt="أجواء ليلية">
+            <img src="37177027-03dc-430f-be0d-1428d347cb02.jpg" alt="حفلات ممتعة">
         </div>
     </div>
 
     <footer>
-        حجز شقق فندقيه وفنادق وسيارات بمصر
+        حجز شقق فندقية وفنادق وسهرات وسيارات في مصر — ليلتك عندنا غير
     </footer>
 
 </body>
