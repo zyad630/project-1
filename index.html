@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url='https://wa.me/201110023164'" />
-    <title>جارٍ تحويلك إلى واتساب</title>
+    <title>تواصل معنا على واتساب</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      function redirectToWhatsApp() {
+        // إذا ما اشتغلش التحويل التلقائي، يظهر زر
+        setTimeout(() => {
+          document.getElementById("manual-link").style.display = "block";
+        }, 4000);
+
+        // محاولة الفتح
+        window.location.href = "https://wa.me/201110023164";
+      }
+
+      window.onload = redirectToWhatsApp;
+    </script>
+    <style>
+      body {
+        background: #0a0a0a;
+        color: white;
+        font-family: 'Cairo', sans-serif;
+        text-align: center;
+        padding: 50px;
+      }
+      .box {
+        background: #1c1c1c;
+        padding: 30px;
+        border-radius: 15px;
+        display: inline-block;
+      }
+      a {
+        color: #25D366;
+        font-size: 20px;
+        text-decoration: none;
+        padding: 15px 30px;
+        background: #222;
+        border-radius: 8px;
+        display: none;
+        margin-top: 20px;
+        border: 2px solid #25D366;
+      }
+      .notice {
+        margin-top: 25px;
+        font-size: 15px;
+        color: #aaa;
+      }
+    </style>
   </head>
   <body>
-    <p>جاري تحويلك تلقائياً إلى واتساب...</p>
+    <div class="box">
+      <h2>جاري تحويلك إلى واتساب...</h2>
+      <a href="https://wa.me/201110023164" target="_blank" id="manual-link">اضغط هنا إذا لم يتم التحويل</a>
+      <p class="notice">
+        إذا لم يعمل الرابط، اضغط فوق على ⋮ واختر "فتح في Safari"
+      </p>
+    </div>
   </body>
 </html>
